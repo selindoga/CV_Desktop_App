@@ -4,17 +4,17 @@ import java.util.ArrayList;
 public class Person {
         private String name;
         private String surname;
-        private ArrayList<contactInfo> contactInfo;
+        private ArrayList<contactInfo> ContactInfo;
         private int birthday;
         private String educationInfo;
         private String skills;
         private String experience;
         private String publications;
 
-        public Person(String name, String surname, ArrayList<contactInfo> contactInfo, int birthday, String educationInfo, String skills, String experience, String publications) {
+        public Person(String name, String surname, ArrayList<contactInfo> ContactInfo, int birthday, String educationInfo, String skills, String experience, String publications) {
             this.name = name;
             this.surname = surname;
-            this.contactInfo = contactInfo;
+            this.ContactInfo = ContactInfo;
             this.birthday = birthday;
             this.educationInfo = educationInfo;
             this.skills = skills;
@@ -39,11 +39,11 @@ public class Person {
         }
 
         public ArrayList<contactInfo> getContactInfo() {
-            return contactInfo;
+            return ContactInfo;
         }
 
-        public void setContactInfo(ArrayList<contactInfo> contactInfo) {
-            this.contactInfo = contactInfo;
+        public void setContactInfo(ArrayList<contactInfo> ContactInfo) {
+            this.ContactInfo = ContactInfo;
         }
 
         public int getBirthday() {
