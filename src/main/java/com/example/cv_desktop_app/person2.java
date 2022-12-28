@@ -1,4 +1,7 @@
+/*
 public class Person {
+
+
     public Person(String name, String surname, ContactInfo[] contactInfo, int birthday, String educationInfo, String skills, String experience, String publications) {
         Name = name;
         Surname = surname;
@@ -82,4 +85,5 @@ public class Person {
     public void setPublications(String publications) {
         this.publications = publications;
     }
-}
+
+ */

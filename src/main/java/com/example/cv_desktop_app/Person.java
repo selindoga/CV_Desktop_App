@@ -4,14 +4,14 @@ import java.util.ArrayList;
 public class Person {
         private String name;
         private String surname;
-        private ArrayList<ContactInfo> contactInfo;
+        private ArrayList<contactInfo> contactInfo;
         private int birthday;
         private String educationInfo;
         private String skills;
         private String experience;
         private String publications;
 
-        public Person(String name, String surname, ArrayList<ContactInfo> contactInfo, int birthday, String educationInfo, String skills, String experience, String publications) {
+        public Person(String name, String surname, ArrayList<contactInfo> contactInfo, int birthday, String educationInfo, String skills, String experience, String publications) {
             this.name = name;
             this.surname = surname;
             this.contactInfo = contactInfo;
@@ -38,11 +38,11 @@ public class Person {
             this.surname = surname;
         }
 
-        public ArrayList<ContactInfo> getContactInfo() {
+        public ArrayList<contactInfo> getContactInfo() {
             return contactInfo;
         }
 
-        public void setContactInfo(ArrayList<ContactInfo> contactInfo) {
+        public void setContactInfo(ArrayList<contactInfo> contactInfo) {
             this.contactInfo = contactInfo;
         }
 
