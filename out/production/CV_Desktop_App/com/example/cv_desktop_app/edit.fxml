@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cv_desktop_app.EditController">
+    <children>
+        <Label layoutX="29.0" layoutY="140.0" text="Edit Name">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Label>
+        <Button layoutX="57.0" layoutY="208.0" mnemonicParsing="false" text="Change Name" />
+        <TextField layoutX="28.0" layoutY="174.0" />
+        <TableView layoutX="190.0" layoutY="74.0" prefHeight="200.0" prefWidth="200.0">
+            <columns>
+                <TableColumn prefWidth="75.0" text="C1" />
+                <TableColumn prefWidth="75.0" text="C2" />
+            </columns>
+        </TableView>
+        <Label layoutX="249.0" layoutY="44.0" text="Edit Attributes">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Label>
+        <Label layoutX="165.0" layoutY="289.0" text="Attribute Name:" />
+        <Label layoutX="177.0" layoutY="318.0" text="New Value:" />
+        <TextField layoutX="254.0" layoutY="284.0" prefHeight="26.0" prefWidth="136.0" />
+        <TextField layoutX="254.0" layoutY="314.0" prefHeight="26.0" prefWidth="136.0" />
+        <Button layoutX="177.0" layoutY="347.0" mnemonicParsing="false" text="Add Attribute" />
+        <Button layoutX="290.0" layoutY="347.0" mnemonicParsing="false" text="Delete Attribute" />
+        <ListView layoutX="409.0" layoutY="74.0" prefHeight="200.0" prefWidth="167.0" />
+        <Label layoutX="461.0" layoutY="44.0" text="Edit Tags">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Label>
+        <Label layoutX="409.0" layoutY="289.0" text="Tag:" />
+        <TextField layoutX="434.0" layoutY="284.0" prefHeight="26.0" prefWidth="142.0" />
+        <Button layoutX="420.0" layoutY="323.0" mnemonicParsing="false" text="Add Tag" />
+        <Button layoutX="499.0" layoutY="323.0" mnemonicParsing="false" text="Delete Tag" />
+    </children>
+</AnchorPane>
+

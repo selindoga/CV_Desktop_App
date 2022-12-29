@@ -5,13 +5,17 @@ public class Person {
         private String name;
         private String surname;
         private ArrayList<contactInfo> ContactInfo;
-        private int birthday;
+        private String birthday;
         private String educationInfo;
         private String skills;
         private String experience;
         private String publications;
 
-        public Person(String name, String surname, ArrayList<contactInfo> ContactInfo, int birthday, String educationInfo, String skills, String experience, String publications) {
+        public Person() {
+
+        }
+
+        public Person(String name, String surname, ArrayList<contactInfo> ContactInfo, String birthday, String educationInfo, String skills, String experience, String publications) {
             this.name = name;
             this.surname = surname;
             this.ContactInfo = ContactInfo;
@@ -46,11 +50,11 @@ public class Person {
             this.ContactInfo = ContactInfo;
         }
 
-        public int getBirthday() {
+        public String getBirthday() {
             return birthday;
         }
 
-        public void setBirthday(int birthday) {
+        public void setBirthday(String birthday) {
             this.birthday = birthday;
         }
 
