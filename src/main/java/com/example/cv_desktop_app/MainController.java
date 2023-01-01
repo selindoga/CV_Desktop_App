@@ -1,14 +1,12 @@
 package com.example.cv_desktop_app;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -20,29 +18,43 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable {
 
     @FXML
-    private final TableView<Person> mainTable = new TableView<>();
+    public TreeView<String> mainView = new TreeView<>();
 
-    @FXML
-    private TableColumn nameCol;
+    public TreeItem<String> rootNode = new TreeItem<>("CVs");
 
-    public static final ObservableList<Person> data = FXCollections.observableArrayList();
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        mainTable.setEditable(true);
+        mainView.setEditable(true);
 
-        mainTable.setItems(data);
+        mainView.setRoot(rootNode);
 
-        nameCol.setCellValueFactory(new PropertyValueFactory<Person, String>("Name"));
+        rootNode.setExpanded(true);
+
+
 
     }
 
 
     @FXML
     void delete() {
-        data.remove(mainTable.getSelectionModel().getSelectedItem());
+        TreeItem c =mainView.getSelectionModel().getSelectedItem();
+        if (c == null) {
+            return;
+        }
+        if (c.getParent() != null) {
+            boolean remove = c.getParent().getChildren().remove(c);
+        }
+        else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR!");
+            alert.setHeaderText("Something went wrong:/");
+            alert.setContentText("You cannot delete the root!");
+            alert.showAndWait();
+        }
     }
+
 
 
     @FXML

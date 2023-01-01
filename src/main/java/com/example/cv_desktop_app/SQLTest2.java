@@ -13,7 +13,7 @@ public class SQLTest2 {
             choice = input.nextInt();
 
             if (choice == 1) {
-                String jdbcUrl = "jdbc:sqlite:/C:\\Users\\cesur\\Desktop\\se302-2\\se 302\\src\\cv.db";
+                String jdbcUrl = "jdbc:sqlite:/C:\\Users\\dogal\\se302-2\\se 302\\src\\cv.db";
                 try {
                     Connection connection = DriverManager.getConnection(jdbcUrl);
                     String Sql = "SELECT * FROM cv";
@@ -54,7 +54,7 @@ public class SQLTest2 {
 
                 SQLTest2.Delete(deleteName);
                 try {
-                    String jdbcUrl = "jdbc:sqlite:/C:\\Users\\cesur\\Desktop\\se302-2\\se 302\\src\\cv.db";
+                    String jdbcUrl = "jdbc:sqlite:/C:\\Users\\dogal\\se302-2\\se 302\\src\\cv.db";
                     Connection connection = DriverManager.getConnection(jdbcUrl);
                     String Sql = "DELETE FROM cv WHERE name = ?";
                     PreparedStatement statement = connection.prepareStatement(Sql);
@@ -78,7 +78,7 @@ public class SQLTest2 {
                // SqliteTest.Edit(new_name);
 
                 try {
-                    String jdbcUrl = "jdbc:sqlite:/C:\\Users\\cesur\\Desktop\\se302-2\\se 302\\src\\cv.db";
+                    String jdbcUrl = "jdbc:sqlite:/C:\\Users\\dogal\\se302-2\\se 302\\src\\cv.db";
                     Connection connection = DriverManager.getConnection(jdbcUrl);
                     String sql = "UPDATE cv SET name =? WHERE new_name IN (SELECT name FROM cv)";
                     PreparedStatement statement = connection.prepareStatement(sql);
@@ -98,7 +98,7 @@ public class SQLTest2 {
 
 
     public static void Edit(String new_name) {
-        String jdbcUrl = "jdbc:sqlite:/C:\\Users\\cesur\\Desktop\\se302-2\\se 302\\src\\cv.db";
+        String jdbcUrl = "jdbc:sqlite:/C:\\Users\\dogal\\se302-2\\se 302\\src\\cv.db";
         String sql = "UPDATE cv SET name =? WHERE name=?";
 
         try{
@@ -114,7 +114,7 @@ public class SQLTest2 {
 
 
     public static void Insert(String name, String email) {
-        String jdbcUrl = "jdbc:sqlite:/C:\\Users\\cesur\\Desktop\\se302-2\\se 302\\src\\cv.db";
+        String jdbcUrl = "jdbc:sqlite:/C:\\Users\\dogal\\se302-2\\se 302\\src\\cv.db";
         String sql = "INSERT INTO cv(name,email) VALUES(?,?)";
         try {
             Connection connection = DriverManager.getConnection(jdbcUrl);
@@ -128,7 +128,7 @@ public class SQLTest2 {
     }
 
     public static void Delete(String name) {
-        String jdbcUrl = "jdbc:sqlite:/C:\\Users\\cesur\\Desktop\\se302-2\\se 302\\src\\cv.db";
+        String jdbcUrl = "jdbc:sqlite:/C:\\Users\\dogal\\se302-2\\se 302\\src\\cv.db";
         String sql = "DELETE FROM cv WHERE name = ?";
         try{
             Connection connection = DriverManager.getConnection(jdbcUrl);

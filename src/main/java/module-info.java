@@ -5,12 +5,12 @@ module com.example.cv_desktop_app {
 
 
 
-    /*
+/*
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
     requires org.kordamp.ikonli.javafx;
 
-     */
+*/
 
 
 

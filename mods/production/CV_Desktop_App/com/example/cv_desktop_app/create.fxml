@@ -17,7 +17,7 @@
         <TextField fx:id="CVName" layoutX="211.0" layoutY="61.0" />
         <TextField fx:id="tagText" layoutX="423.0" layoutY="200.0" />
         <Label layoutX="423.0" layoutY="169.0" text="Tag:" />
-        <Button fx:id="addTagButton" layoutX="512.0" layoutY="239.0" mnemonicParsing="false" onAction="#addTag" text="Add Tag" />
+        <Button fx:id="addTagButton" layoutX="512.0" layoutY="239.0" mnemonicParsing="false" text="Add Tag" />
         <Button fx:id="createCVButton" layoutX="487.0" layoutY="340.0" mnemonicParsing="false" onAction="#createCV" text="Create CV" />
         <Button layoutX="369.0" layoutY="61.0" mnemonicParsing="false" onAction="#addNameToTable" text="Add to Table" />
         <TreeView fx:id="treeView" layoutX="203.0" layoutY="126.0" prefHeight="200.0" prefWidth="200.0" />

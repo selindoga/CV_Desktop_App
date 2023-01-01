@@ -15,7 +15,7 @@ public class cvCreation {
         if (choice == 1) {
             //Class.forName("org.sqlite.JDBC");
             // Connect to the database
-            String url = "jdbc:sqlite:database.db";
+            String url = "jdbc:sqlite:/C:\\Users\\dogal\\cvCreation\\database.db";
             try (Connection conn = DriverManager.getConnection(url)) {
                 // Create the table with the "name" and "surname" columns
                 String sql = "CREATE TABLE cv (id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT NOT NULL, surname TEXT NOT NULL)";
@@ -84,7 +84,7 @@ public class cvCreation {
     }
 
     public static void addValues() {
-        String url = "jdbc:sqlite:database.db";
+        String url = "jdbc:sqlite:/C:\\Users\\dogal\\cvCreation\\database.db";
         String newName;
         String newSurname;
         try (Connection conn = DriverManager.getConnection(url)) {
@@ -114,7 +114,7 @@ public class cvCreation {
     }
 
     public static void deleteTable() {
-        String url = "jdbc:sqlite:database.db";
+        String url = "jdbc:sqlite:/C:\\Users\\dogal\\cvCreation\\database.db";
         try (Connection conn = DriverManager.getConnection(url)) {
             // Create the table with the "name" and "surname" columns
             String sql = "DROP TABLE cv";
@@ -125,7 +125,7 @@ public class cvCreation {
 
 
     public static void view(){
-        String url = "jdbc:sqlite:database.db";
+        String url = "jdbc:sqlite:/C:\\Users\\dogal\\cvCreation\\database.db";
         try (Connection conn = DriverManager.getConnection(url)) {
             // Create the table with the "name" and "surname" columns
             String sql = "SELECT* FROM cv";
@@ -135,7 +135,7 @@ public class cvCreation {
     }
 
     public static void Edit(String new_name, int id) {
-        String url = "jdbc:sqlite:database.db";
+        String url = "jdbc:sqlite:/C:\\Users\\dogal\\cvCreation\\database.db";
 
         try {
             String sql = "UPDATE cv SET name = ? WHERE id=?";
@@ -160,7 +160,7 @@ public class cvCreation {
     }
 
     public static void Delete(int id) {
-        String url = "jdbc:sqlite:database.db";
+        String url = "jdbc:sqlite:/C:\\Users\\dogal\\cvCreation\\database.db";
         String sql = "DELETE FROM cv WHERE id = ?" ;
         try{
             Connection connection = DriverManager.getConnection(url);
