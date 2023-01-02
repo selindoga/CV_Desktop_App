@@ -15,6 +15,10 @@ public class Person {
 
         }
 
+        public Person(String name) {
+            this.name=name;
+        }
+
         public Person(String name, String surname, ArrayList<contactInfo> ContactInfo, String birthday, String educationInfo, String skills, String experience, String publications) {
             this.name = name;
             this.surname = surname;
