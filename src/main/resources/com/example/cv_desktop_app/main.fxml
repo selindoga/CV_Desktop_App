@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TreeView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="mainPane" prefHeight="400.0" prefWidth="528.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cv_desktop_app.MainController">
+<AnchorPane fx:id="mainPane" prefHeight="400.0" prefWidth="528.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cv_desktop_app.MainController">
     <children>
         <MenuBar layoutY="2.0" prefHeight="26.0" prefWidth="600.0">
             <menus>
@@ -57,7 +57,7 @@
                   </menus>
               </MenuBar>
               <Button fx:id="termineApp1" layoutX="492.0" layoutY="327.0" mnemonicParsing="false" onMouseClicked="#exit" text="Close" />
-              <Button fx:id="openDetails1" layoutX="456.0" layoutY="46.0" mnemonicParsing="false" text="Show More Details" />
+              <Button fx:id="openDetails1" layoutX="456.0" layoutY="46.0" mnemonicParsing="false" onAction="#showmoredetails" text="Show More Details" />
               <TreeView fx:id="mainView1" layoutX="24.0" layoutY="46.0" prefHeight="318.0" prefWidth="392.0" />
           </children>
       </AnchorPane>
