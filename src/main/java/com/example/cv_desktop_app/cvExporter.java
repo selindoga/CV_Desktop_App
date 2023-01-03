@@ -1,4 +1,4 @@
-/*package com.example.cv_desktop_app;
+package com.example.cv_desktop_app;
 
 import java.io.IOException;
 
@@ -92,4 +92,4 @@ public class cvExporter {
         }
 
     }
-}*/
+}
