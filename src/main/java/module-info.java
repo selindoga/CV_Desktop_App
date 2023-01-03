@@ -3,6 +3,7 @@ module com.example.cv_desktop_app {
     requires javafx.fxml;
     requires java.sql;
     requires pdfbox;
+    requires java.desktop;
 
 
 
