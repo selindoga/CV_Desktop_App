@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TreeView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="mainPane" prefHeight="400.0" prefWidth="528.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cv_desktop_app.MainController">
+<AnchorPane fx:id="mainPane" prefHeight="400.0" prefWidth="528.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cv_desktop_app.MainController">
     <children>
         <MenuBar layoutY="2.0" prefHeight="26.0" prefWidth="600.0">
             <menus>
@@ -49,11 +45,7 @@
                               <MenuItem mnemonicParsing="false" onAction="#delete" text="Delete" />
                           </items>
                       </Menu>
-                      <Menu mnemonicParsing="false" text="Help">
-                          <items>
-                              <MenuItem mnemonicParsing="false" text="About" />
-                          </items>
-                      </Menu>
+                      <Menu mnemonicParsing="false" text="Help" />
                   </menus>
               </MenuBar>
               <Button fx:id="termineApp1" layoutX="492.0" layoutY="327.0" mnemonicParsing="false" onMouseClicked="#exit" text="Close" />
