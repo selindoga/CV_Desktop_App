@@ -16,6 +16,8 @@ public class CreateController implements Initializable {
     @FXML
     private TreeView<String> treeView = new TreeView<>();
 
+    private Person p;
+
     @FXML
     private TextField CVName;
 
@@ -41,13 +43,15 @@ public class CreateController implements Initializable {
 
         rootNode1.setExpanded(true);
 
+        p=new Person();
+
     }
 
     @FXML
     void addNameToTable() {
 
         if (CVName.getText().length() != 0) {
-            //Person p=new Person(CVName.getText());
+            p.setName(CVName.getText());
             TreeItem<String> newCV = new TreeItem<>(CVName.getText());
             rootNode1.getChildren().add(newCV);
             TreeItem<String> newSurname = new TreeItem<>("Surname");
@@ -88,8 +92,27 @@ public class CreateController implements Initializable {
         }
 
         else {
-            //inputs.put(attrName.getText(), valueText.getText());
+
             cv.setValue(cv.getValue()+": "+valueText.getText());
+
+            if(cv.getValue().toLowerCase().equals("surname")) {
+                p.setSurname(valueText.getText());
+            }
+            else if(cv.getValue().toLowerCase().equals("birthday")) {
+                p.setBirthday(valueText.getText());
+            }
+            else if(cv.getValue().toLowerCase().equals("education info")) {
+                p.setEducationInfo(valueText.getText());
+            }
+            else if(cv.getValue().toLowerCase().equals("skills")) {
+                p.setSkills(valueText.getText());
+            }
+            else if(cv.getValue().toLowerCase().equals("experience")) {
+                p.setExperience(valueText.getText());
+            }
+            else if(cv.getValue().toLowerCase().equals("publications")) {
+                p.setPublications(valueText.getText());
+            }
 
         }
 
@@ -132,7 +155,7 @@ public class CreateController implements Initializable {
         TreeItem<String> cv = treeView.getSelectionModel().getSelectedItem();
 
         if (cv.getParent() == rootNode1) {
-            main.rootNode.getChildren().add(cv);
+            main.cvList.add(cv);
         }
         else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
