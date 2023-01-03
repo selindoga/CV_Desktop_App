@@ -12,6 +12,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -45,7 +46,26 @@ public class MainController implements Initializable {
 
         rootNode.setExpanded(true);
 
+        ArrayList<Person> resumes = DBConnection.getInstance().getResumeData();
 
+        for(Person p: resumes){
+            ArrayList<String> tags = DBConnection.getInstance().getTag(p.getName());
+            String tags_text = "";
+            for(String t: tags){
+                tags_text += t + " ";
+            }
+            tags_text = tags_text.trim();
+
+            TreeItem<String> newCV = new TreeItem<>(p.getName() + " - " + tags_text);
+            rootNode.getChildren().add(newCV);
+            TreeItem<String> newSurname = new TreeItem<>("Surname: " + p.getSurname());
+            TreeItem<String> newBirthday = new TreeItem<>("Birthday: " + p.getBirthday());
+            TreeItem<String> newEduInfo = new TreeItem<>("Education Info: " + p.getEducationInfo());
+            TreeItem<String> newSkills = new TreeItem<>("Skills: " + p.getSkills());
+            TreeItem<String> newExp = new TreeItem<>("Experience: " + p.getExperience());
+            TreeItem<String> newPub = new TreeItem<>("Publications: " + p.getPublications());
+            newCV.getChildren().addAll(newSurname,newBirthday,newEduInfo,newSkills,newExp,newPub);
+        }
     }
 
 
@@ -55,6 +75,8 @@ public class MainController implements Initializable {
         if (CVName.getText().length() != 0) {
             //p=new Person(CVName.getText());
             p.setName(CVName.getText());
+            DBConnection.getInstance().addResumeName2DB(CVName.getText());
+            
             TreeItem<String> newCV = new TreeItem<>(CVName.getText());
             rootNode.getChildren().add(newCV);
             TreeItem<String> newSurname = new TreeItem<>("Surname");
@@ -94,17 +116,138 @@ public class MainController implements Initializable {
 
     @FXML
     void deleteCV() {
-        TreeItem c = mainView.getSelectionModel().getSelectedItem();
-        if (c == null) {
-            return;
-        }
-        if (c.getParent() != null) {
-            boolean remove = c.getParent().getChildren().remove(c);
+        TreeItem<String> cv = mainView.getSelectionModel().getSelectedItem();
+        int node_level = mainView.getTreeItemLevel(cv);
+        if(node_level==1){
+            if (cv == null) {
+                return;
+            }
+            if (cv.getParent() != null) {
+                boolean remove = cv.getParent().getChildren().remove(cv);
+                if(remove){
+                    String cv_view_text = cv.getValue();
+                    String[] cv_parts = cv_view_text.split("-");
+                    String cv_name = cv_parts[0];
+                    cv_name = cv_name.trim();
+                    DBConnection.getInstance().deleteResumeFromDB(cv_name);
+                }
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("ERROR!");
+                alert.setHeaderText("Something went wrong:/");
+                alert.setContentText("You cannot delete the root!");
+                alert.showAndWait();
+            }
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR!");
             alert.setHeaderText("Something went wrong:/");
-            alert.setContentText("You cannot delete the root!");
+            String level_name = "";
+            if(node_level == 0){
+                level_name = "root";
+            } else if(node_level == 2){
+                level_name = "attribute";
+            }
+            alert.setContentText("You cannot delete the " + level_name + "!");
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    void deleteTag() {
+        TreeItem<String> cv = mainView.getSelectionModel().getSelectedItem();
+        int node_level = mainView.getTreeItemLevel(cv);
+        if(node_level==1){
+            if (cv == null) {
+                return;
+            }
+            if (cv.getParent() != null) {
+                String cv_view_text = cv.getValue();
+                String[] cv_parts = cv_view_text.split("-");
+                String cv_name = cv_parts[0];
+                cv_name = cv_name.trim();
+                cv.setValue(cv_name + " - ");
+                DBConnection.getInstance().deleteTagFromDB(cv_name);
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("ERROR!");
+                alert.setHeaderText("Something went wrong:/");
+                alert.setContentText("You cannot delete the root!");
+                alert.showAndWait();
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR!");
+            alert.setHeaderText("Something went wrong:/");
+            String level_name = "";
+            if(node_level == 0){
+                level_name = "root";
+            } else if(node_level == 2){
+                level_name = "attribute";
+            }
+            alert.setContentText("You cannot delete the " + level_name + "!");
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    void deleteAttribute() {
+        TreeItem<String> cv = mainView.getSelectionModel().getSelectedItem();
+        int node_level = mainView.getTreeItemLevel(cv);
+        if(node_level==2){
+            if (cv == null) {
+                return;
+            }
+            if (cv.getParent() != null) {
+                String parent_string = cv.getParent().getValue();
+                String[] parent_string_split = parent_string.split("-");
+                String cv_name = parent_string_split[0];
+                cv_name = cv_name.trim();
+
+                String attr_text = cv.getValue();
+                String[] attr_text_splits = attr_text.split(":");
+                String attr_name = attr_text_splits[0];
+                attr_name = attr_name.trim();
+                cv.setValue(attr_name);
+                String db_attr_name = "";
+                if(attr_name.toLowerCase().equals("surname")) {
+                    db_attr_name = "surname";
+                }
+                else if(attr_name.toLowerCase().equals("birthday")) {
+                    db_attr_name = "birthday";
+                }
+                else if(attr_name.toLowerCase(Locale.forLanguageTag("en")).equals("education info")) {
+                    db_attr_name = "education";
+                }
+                else if(attr_name.toLowerCase().equals("skills")) {
+                    db_attr_name = "skill";
+                }
+                else if(attr_name.toLowerCase().equals("experience")) {
+                    db_attr_name = "experience";
+                }
+                else if(attr_name.toLowerCase().equals("publications")) {
+                    db_attr_name =  "publication";
+                }
+
+                DBConnection.getInstance().updateData2DB(cv_name, db_attr_name, null);
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("ERROR!");
+                alert.setHeaderText("Something went wrong:/");
+                alert.setContentText("You cannot delete the root!");
+                alert.showAndWait();
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR!");
+            alert.setHeaderText("Something went wrong:/");
+            String level_name = "";
+            if(node_level == 0){
+                level_name = "root";
+            } else if(node_level == 1){
+                level_name = "resume";
+            }
+            alert.setContentText("You cannot delete the " + level_name + "!");
             alert.showAndWait();
         }
     }
@@ -129,29 +272,53 @@ public class MainController implements Initializable {
 
         else {
 
-            cv.setValue(cv.getValue()+": "+valueText.getText());
+            String[] row = cv.getValue().split(":");
+            String attrName = row[0].trim();
+            String attrVal = "";
+            if(attrName.toLowerCase().equals("surname") || attrName.toLowerCase().equals("birthday")){
+            } else{
+                try{
+                    attrVal = row[1].trim();
+                } catch(Exception e){
+                }
+            }
+            attrVal += " " + valueText.getText();
+            attrVal = attrVal.trim();
 
-            if(cv.getValue().toLowerCase().equals("surname")) {
+            String attr_String = attrName+": "+attrVal;
+            cv.setValue(attr_String);
+
+            String parent_string = cv.getParent().getValue();
+            String[] parent_string_split = parent_string.split("-");
+            String cv_name = parent_string_split[0];
+            cv_name = cv_name.trim();
+            
+            if(attrName.toLowerCase().equals("surname")) {
                 p.setSurname(valueText.getText());
+                DBConnection.getInstance().updateData2DB(cv_name, "surname", attrVal);
             }
-            else if(cv.getValue().toLowerCase().equals("birthday")) {
+            else if(attrName.toLowerCase().equals("birthday")) {
                 p.setBirthday(valueText.getText());
+                DBConnection.getInstance().updateData2DB(cv_name, "birthday", attrVal);
             }
-            else if(cv.getValue().toLowerCase().equals("education info")) {
+            else if(attrName.toLowerCase(Locale.forLanguageTag("en")).equals("education info")) {
                 p.setEducationInfo(valueText.getText());
+                DBConnection.getInstance().updateData2DB(cv_name, "education", attrVal);
             }
-            else if(cv.getValue().toLowerCase().equals("skills")) {
+            else if(attrName.toLowerCase().equals("skills")) {
                 p.setSkills(valueText.getText());
+                DBConnection.getInstance().updateData2DB(cv_name, "skill", attrVal);
             }
-            else if(cv.getValue().toLowerCase().equals("experience")) {
+            else if(attrName.toLowerCase().equals("experience")) {
                 p.setExperience(valueText.getText());
+                DBConnection.getInstance().updateData2DB(cv_name, "experience", attrVal);
             }
-            else if(cv.getValue().toLowerCase().equals("publications")) {
+            else if(attrName.toLowerCase().equals("publications")) {
                 p.setPublications(valueText.getText());
+                DBConnection.getInstance().updateData2DB(cv_name, "publication", attrVal);
             }
 
         }
-
 
         //attrName.setText("");
         valueText.setText("");
@@ -256,15 +423,26 @@ public class MainController implements Initializable {
         }
 
         if (cv.getParent() == rootNode) {
-            cv.setValue(cv.getValue() + " tagged as " + tagText.getText());
+            String[] row = cv.getValue().split("-");
+            String cvname = row[0].trim();
+            String tags = "";
+            try{
+                tags = row[1].trim();
+            } catch(Exception e){
+            }
+            tags += " " + tagText.getText();
+            tags = tags.trim();
+
+            String cv_main_string = cvname+" - "+tags;
+            cv.setValue(cv_main_string);
+            DBConnection.getInstance().addTag2DB(cvname, tagText.getText());
+            tagText.clear();
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("INFORMATION!");
             alert.setHeaderText("Something went wrong:/");
             alert.setContentText("Please try another thing.");
             alert.showAndWait();
-
-
         }
 
     }

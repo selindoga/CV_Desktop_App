@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class CreateController implements Initializable {
@@ -101,7 +102,7 @@ public class CreateController implements Initializable {
             else if(cv.getValue().toLowerCase().equals("birthday")) {
                 p.setBirthday(valueText.getText());
             }
-            else if(cv.getValue().toLowerCase().equals("education info")) {
+            else if(cv.getValue().toLowerCase(Locale.forLanguageTag("en")).equals("education info")) {
                 p.setEducationInfo(valueText.getText());
             }
             else if(cv.getValue().toLowerCase().equals("skills")) {

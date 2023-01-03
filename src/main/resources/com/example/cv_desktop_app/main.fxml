@@ -22,8 +22,8 @@
                 <Menu mnemonicParsing="false" text="Delete">
                     <items>
                         <MenuItem fx:id="editCV" mnemonicParsing="false" onAction="#deleteCV" text="Delete CV" />
-                        <MenuItem mnemonicParsing="false" text="Delete Attribute" />
-                  <MenuItem mnemonicParsing="false" text="Delete Tag" />
+                        <MenuItem mnemonicParsing="false" onAction="#deleteAttribute" text="Delete Attribute" />
+                  <MenuItem mnemonicParsing="false" onAction="#deleteTag" text="Delete Tag" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help" />
