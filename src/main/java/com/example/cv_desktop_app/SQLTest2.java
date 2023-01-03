@@ -1,4 +1,6 @@
+/*
 package com.example.cv_desktop_app;
+
 
 import java.sql.*;
 import java.util.Scanner;
@@ -144,3 +146,6 @@ public class SQLTest2 {
     }
 
 }
+
+
+ */
