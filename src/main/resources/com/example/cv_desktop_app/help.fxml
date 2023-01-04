@@ -12,6 +12,6 @@
             <Image url="@help_img.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="termineApp" layoutX="507.0" layoutY="20.0" mnemonicParsing="false" onAction="#exit" onMouseClicked="#exit" text="Back" />
+      <Button layoutX="507.0" layoutY="20.0" mnemonicParsing="false" onAction="#returnback" onMouseClicked="#returnback" text="Back" />
    </children>
 </AnchorPane>

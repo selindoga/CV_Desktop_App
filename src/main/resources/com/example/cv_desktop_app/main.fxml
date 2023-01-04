@@ -29,7 +29,7 @@
 
             </menus>
         </MenuBar>
-        <Button fx:id="termineApp" layoutX="577.0" layoutY="406.0" mnemonicParsing="false" onAction="#exit" onMouseClicked="#exit" text="Close" />
+        <Button fx:id="helpButton" layoutX="577.0" layoutY="406.0" mnemonicParsing="false" onAction="#displayHelp" onMouseClicked="#displayHelp" text="Help" />
         <Button fx:id="openDetails" layoutX="265.0" layoutY="406.0" mnemonicParsing="false" onAction="#showMoreDetails" text="Show More Details" />
         <TreeView fx:id="mainView" layoutX="194.0" layoutY="39.0" prefHeight="354.0" prefWidth="257.0" />
       <Label layoutX="62.0" layoutY="48.0" text="Create">
@@ -76,5 +76,6 @@
       <TextField fx:id="tagText" layoutX="461.0" layoutY="116.0" prefHeight="26.0" prefWidth="138.0" />
       <Button layoutX="605.0" layoutY="116.0" mnemonicParsing="false" onAction="#addTag" text="OK" />
       <Label layoutX="499.0" layoutY="92.0" text="Tag to Add:" />
+      <Button fx:id="termineApp1" layoutX="591.0" layoutY="35.0" mnemonicParsing="false" onAction="#exit" onMouseClicked="#exit" text="Close" />
     </children>
 </AnchorPane>
