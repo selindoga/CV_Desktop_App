@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
@@ -43,6 +44,7 @@ public class CreateController implements Initializable {
     private Parent root;
     private Stage stage;
     private Scene scene;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -182,6 +184,14 @@ public class CreateController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
+
+
+
+
+
+
+
 
 
 }
