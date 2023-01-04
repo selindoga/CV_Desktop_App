@@ -5,16 +5,23 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.logging.Logger;
 
 
 public class MainController implements Initializable {
@@ -36,6 +43,9 @@ public class MainController implements Initializable {
     private TextField tagText;
 
     Person p=new Person();
+    private Parent root;
+    private Stage stage;
+    private Scene scene;
 
 
     @Override
@@ -47,7 +57,33 @@ public class MainController implements Initializable {
         rootNode.setExpanded(true);
 
         ArrayList<Person> resumes = DBConnection.getInstance().getResumeData();
+        for(Person p: resumes){
+            ArrayList<String> tags = DBConnection.getInstance().getTag(p.getName());
+            String tags_text = "";
+            for(String t: tags){
+                tags_text += t + " ";
+            }
+            tags_text = tags_text.trim();
+            ArrayList<Person> resumes = DBConnection.getInstance().getResumeData();
 
+            for(Person p: resumes){
+                ArrayList<String> tags = DBConnection.getInstance().getTag(p.getName());
+                String tags_text = "";
+                for(String t: tags){
+                    tags_text += t + " ";
+                }
+                tags_text = tags_text.trim();
+
+                TreeItem<String> newCV = new TreeItem<>(p.getName() + " - " + tags_text);
+                rootNode.getChildren().add(newCV);
+                TreeItem<String> newSurname = new TreeItem<>("Surname: " + p.getSurname());
+                TreeItem<String> newBirthday = new TreeItem<>("Birthday: " + p.getBirthday());
+                TreeItem<String> newEduInfo = new TreeItem<>("Education Info: " + p.getEducationInfo());
+                TreeItem<String> newSkills = new TreeItem<>("Skills: " + p.getSkills());
+                TreeItem<String> newExp = new TreeItem<>("Experience: " + p.getExperience());
+                TreeItem<String> newPub = new TreeItem<>("Publications: " + p.getPublications());
+                newCV.getChildren().addAll(newSurname,newBirthday,newEduInfo,newSkills,newExp,newPub);
+            }
         for(Person p: resumes){
             ArrayList<String> tags = DBConnection.getInstance().getTag(p.getName());
             String tags_text = "";
@@ -365,7 +401,28 @@ public class MainController implements Initializable {
     }
 
 
+    // I can open scenes in one window with this part
     @FXML
+    public void showMoreDetails(ActionEvent e) throws IOException{
+        root = FXMLLoader.load(getClass().getResource("cvpage.fxml"));
+        stage=(Stage)((Node)e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    /*@FXML
+    private void showMoreDetails(ActionEvent event) throws Exception{
+        logger.info("onshowMoreDetailsClicked");
+
+        Stage stage = new Stage();
+        AnchorPane root;
+        root = (AnchorPane)FXMLLoader.load(getClass().getResource("cvpage.fxml"));
+        Scene scene = new Scene(root,650,450);
+        stage.setScene(scene);
+        stage.show();
+    }  */
+    /*@FXML
     void showMoreDetails(ActionEvent event) throws Exception {
         Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("cvpage.fxml")));
         Stage stage = new Stage();
@@ -375,11 +432,15 @@ public class MainController implements Initializable {
         stage.setMinWidth(605);
         stage.setMinHeight(405);
         stage.setResizable(true);
-
-
         stage.show();
-    }
 
+
+
+
+
+
+    }*/
+    /*
     @FXML
     void returnback(ActionEvent event) throws Exception {
         Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("main.fxml")));
@@ -393,6 +454,23 @@ public class MainController implements Initializable {
 
 
         stage.show();
+    }*/
+    @FXML
+    public void returnback(ActionEvent e) throws IOException{
+        root = FXMLLoader.load(getClass().getResource("main.fxml"));
+        stage=(Stage)((Node)e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    public void gotoCreateCVpage(ActionEvent e) throws IOException{
+        root = FXMLLoader.load(getClass().getResource("create.fxml"));
+        stage=(Stage)((Node)e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
@@ -401,7 +479,7 @@ public class MainController implements Initializable {
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setTitle("Edit");
-        stage.setScene(new Scene(parent, 600, 400));
+        stage.setScene(new Scene(parent, 650, 450));
         stage.setMinWidth(605);
         stage.setMinHeight(405);
         stage.setResizable(true);

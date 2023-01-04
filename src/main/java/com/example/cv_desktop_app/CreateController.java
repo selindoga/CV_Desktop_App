@@ -1,12 +1,17 @@
 package com.example.cv_desktop_app;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.collections.FXCollections;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Locale;
@@ -35,6 +40,9 @@ public class CreateController implements Initializable {
     HashMap<String,String> inputs=new HashMap<>();
 
     MainController main=new MainController();
+    private Parent root;
+    private Stage stage;
+    private Scene scene;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -165,6 +173,14 @@ public class CreateController implements Initializable {
             alert.setContentText("Please try another thing.");
             alert.showAndWait();
         }
+    }
+    @FXML
+    public void returnback(ActionEvent e) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("main.fxml"));
+        stage=(Stage)((Node)e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
 

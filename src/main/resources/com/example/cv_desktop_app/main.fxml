@@ -70,7 +70,7 @@
       <TextField layoutX="12.0" layoutY="393.0" prefHeight="26.0" prefWidth="138.0" />
       <Label layoutX="33.0" layoutY="375.0" text="Value to Filter:" />
       <Button layoutX="155.0" layoutY="393.0" mnemonicParsing="false" text="OK" />
-      <Button layoutX="51.0" layoutY="199.0" mnemonicParsing="false" text="Create CV" />
+      <Button layoutX="51.0" layoutY="199.0" mnemonicParsing="false" onAction="#gotoCreateCVpage" text="Create CV" />
       <Label layoutX="529.0" layoutY="52.0" text="Tag">
          <font>
             <Font size="16.0" />
