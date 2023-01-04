@@ -56,14 +56,7 @@ public class MainController implements Initializable {
 
         rootNode.setExpanded(true);
 
-        ArrayList<Person> resumes = DBConnection.getInstance().getResumeData();
-        for(Person p: resumes){
-            ArrayList<String> tags = DBConnection.getInstance().getTag(p.getName());
-            String tags_text = "";
-            for(String t: tags){
-                tags_text += t + " ";
-            }
-            tags_text = tags_text.trim();
+
             ArrayList<Person> resumes = DBConnection.getInstance().getResumeData();
 
             for(Person p: resumes){
@@ -84,24 +77,24 @@ public class MainController implements Initializable {
                 TreeItem<String> newPub = new TreeItem<>("Publications: " + p.getPublications());
                 newCV.getChildren().addAll(newSurname,newBirthday,newEduInfo,newSkills,newExp,newPub);
             }
-        for(Person p: resumes){
-            ArrayList<String> tags = DBConnection.getInstance().getTag(p.getName());
-            String tags_text = "";
-            for(String t: tags){
-                tags_text += t + " ";
-            }
-            tags_text = tags_text.trim();
-
-            TreeItem<String> newCV = new TreeItem<>(p.getName() + " - " + tags_text);
-            rootNode.getChildren().add(newCV);
-            TreeItem<String> newSurname = new TreeItem<>("Surname: " + p.getSurname());
-            TreeItem<String> newBirthday = new TreeItem<>("Birthday: " + p.getBirthday());
-            TreeItem<String> newEduInfo = new TreeItem<>("Education Info: " + p.getEducationInfo());
-            TreeItem<String> newSkills = new TreeItem<>("Skills: " + p.getSkills());
-            TreeItem<String> newExp = new TreeItem<>("Experience: " + p.getExperience());
-            TreeItem<String> newPub = new TreeItem<>("Publications: " + p.getPublications());
-            newCV.getChildren().addAll(newSurname,newBirthday,newEduInfo,newSkills,newExp,newPub);
-        }
+        //for(Person p: resumes){
+        //    ArrayList<String> tags = DBConnection.getInstance().getTag(p.getName());
+        //    String tags_text = "";
+        //    for(String t: tags){
+        //        tags_text += t + " ";
+        //    }
+        //    tags_text = tags_text.trim();
+//
+        //    TreeItem<String> newCV = new TreeItem<>(p.getName() + " - " + tags_text);
+        //    rootNode.getChildren().add(newCV);
+        //    TreeItem<String> newSurname = new TreeItem<>("Surname: " + p.getSurname());
+        //    TreeItem<String> newBirthday = new TreeItem<>("Birthday: " + p.getBirthday());
+        //    TreeItem<String> newEduInfo = new TreeItem<>("Education Info: " + p.getEducationInfo());
+        //    TreeItem<String> newSkills = new TreeItem<>("Skills: " + p.getSkills());
+        //    TreeItem<String> newExp = new TreeItem<>("Experience: " + p.getExperience());
+        //    TreeItem<String> newPub = new TreeItem<>("Publications: " + p.getPublications());
+        //    newCV.getChildren().addAll(newSurname,newBirthday,newEduInfo,newSkills,newExp,newPub);
+        //}
     }
 
 
