@@ -26,7 +26,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#deleteTag" text="Delete Tag" />
                     </items>
                 </Menu>
-                <Menu id="helpButton" fx:id="helpButton" mnemonicParsing="false" onAction="#displayHelp" text="Help" />
+
             </menus>
         </MenuBar>
         <Button fx:id="termineApp" layoutX="577.0" layoutY="406.0" mnemonicParsing="false" onAction="#exit" onMouseClicked="#exit" text="Close" />
@@ -52,11 +52,8 @@
       <TextField layoutX="460.0" layoutY="212.0" prefHeight="26.0" prefWidth="138.0" />
       <Button layoutX="605.0" layoutY="212.0" mnemonicParsing="false" text="OK" />
       <Label layoutX="457.0" layoutY="258.0" text="New Value for an Attribute:" />
-      <TextField layoutX="461.0" layoutY="285.0" prefHeight="26.0" prefWidth="138.0" />
-      <Button layoutX="605.0" layoutY="286.0" mnemonicParsing="false" text="OK" />
-      <Label layoutX="480.0" layoutY="321.0" text="New Value for Tag:" />
-      <TextField layoutX="461.0" layoutY="343.0" prefHeight="26.0" prefWidth="138.0" />
-      <Button layoutX="605.0" layoutY="343.0" mnemonicParsing="false" text="OK" />
+      <TextField fx:id="valueText" layoutX="461.0" layoutY="285.0" prefHeight="26.0" prefWidth="138.0" />
+      <Button layoutX="605.0" layoutY="286.0" mnemonicParsing="false" onAction="#addAttributeToTable" text="OK" />
       <Label layoutX="26.0" layoutY="238.0" text="Search and Filter">
          <font>
             <Font size="16.0" />
@@ -70,7 +67,7 @@
       <TextField layoutX="12.0" layoutY="393.0" prefHeight="26.0" prefWidth="138.0" />
       <Label layoutX="33.0" layoutY="375.0" text="Value to Filter:" />
       <Button layoutX="155.0" layoutY="393.0" mnemonicParsing="false" text="OK" />
-      <Button layoutX="51.0" layoutY="199.0" mnemonicParsing="false" onAction="#gotoCreateCVpage" text="Create CV" />
+      <Button layoutX="51.0" layoutY="199.0" mnemonicParsing="false" text="Create CV" />
       <Label layoutX="529.0" layoutY="52.0" text="Tag">
          <font>
             <Font size="16.0" />
