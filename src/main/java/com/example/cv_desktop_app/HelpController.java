@@ -13,7 +13,7 @@ public class HelpController extends Application {
     }
 
     @FXML
-    public void handleCloseButtonAction(ActionEvent event) {
+    public void BackButtonAction(ActionEvent event) {
         Stage stage = (Stage) backButton.getScene().getWindow();
         stage.close();
     }

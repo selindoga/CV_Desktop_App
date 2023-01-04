@@ -5,14 +5,13 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="642.0" prefWidth="590.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cv_desktop_app.Help">
+<AnchorPane prefHeight="677.0" prefWidth="587.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cv_desktop_app.HelpController">
    <children>
-      <ImageView fitHeight="607.0" fitWidth="560.0" layoutX="30.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="684.0" fitWidth="459.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../../../Pictures/Screenshots/Help%20(2).png" />
+            <Image url="@help_img.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="termineApp" layoutX="534.0" layoutY="22.0" mnemonicParsing="false" onAction="#exit" onMouseClicked="#exit" text="Close" />
+      <Button fx:id="termineApp" layoutX="507.0" layoutY="20.0" mnemonicParsing="false" onAction="#exit" onMouseClicked="#exit" text="Back" />
    </children>
 </AnchorPane>

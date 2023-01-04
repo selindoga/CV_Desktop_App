@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
@@ -105,7 +106,7 @@ public class MainController implements Initializable {
             //p=new Person(CVName.getText());
             p.setName(CVName.getText());
             DBConnection.getInstance().addResumeName2DB(CVName.getText());
-            
+
             TreeItem<String> newCV = new TreeItem<>(CVName.getText());
             rootNode.getChildren().add(newCV);
             TreeItem<String> newSurname = new TreeItem<>("Surname");
@@ -321,7 +322,7 @@ public class MainController implements Initializable {
             String[] parent_string_split = parent_string.split("-");
             String cv_name = parent_string_split[0];
             cv_name = cv_name.trim();
-            
+
             if(attrName.toLowerCase().equals("surname")) {
                 p.setSurname(valueText.getText());
                 DBConnection.getInstance().updateData2DB(cv_name, "surname", attrVal);
@@ -523,4 +524,18 @@ public class MainController implements Initializable {
 
     }
 
+
+    @FXML
+    void displayHelp(ActionEvent e) throws IOException{
+        try { // help ekranı açılmalı
+            root = FXMLLoader.load(getClass().getResource("help.fxml"));
+            stage=(Stage)((Node)e.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ee) {
+            Logger logger = Logger.getLogger(getClass().getName());
+            logger.log(Level.SEVERE, "Failed to create new Window.", ee);
+        }
+    }
 }
